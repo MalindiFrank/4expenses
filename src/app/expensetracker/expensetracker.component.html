@@ -1,0 +1,23 @@
+<p>expensetracker works!</p>
+
+
+<span>Total expense : {{totalExpense}} </span>
+<span>Total income : {{totalIncome}} </span> <br> <br>
+
+{{totalIncome - totalExpense}}
+
+<input type=" text"  placeholder="Enter item"  [(ngModel)]="expenseItem"  />
+
+<input type="number"  placeholder="Enter amount"  [(ngModel)]="amount" />
+<select [(ngModel)]="expenseType">
+    <option value="Income"> Income</option>
+    <option value="Expense"> Expense</option>
+</select>
+
+<button  (click)="add()"> Add</button>
+
+<div *ngFor="let item of expenses">
+    {{item.expenseItem}}
+    {{item.amount}}
+     
+</div>
