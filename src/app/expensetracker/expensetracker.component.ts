@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 @Component({
   selector: 'app-expensetracker',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor,NgClass],
   templateUrl: './expensetracker.component.html',
   styleUrl: './expensetracker.component.css'
 })
