@@ -1,23 +1,49 @@
-<p>expensetracker works!</p>
+<div class="container">
 
+<h2>Expense Tracker </h2>
 
-<span>Total expense : {{totalExpense}} </span>
-<span>Total income : {{totalIncome}} </span> <br> <br>
+<div class="balance">
+    <span>Your Balance</span>
+    <p style="font-weight: bold;">
+       R {{totalIncome - totalExpense}}
+    </p>
+</div>
 
-{{totalIncome - totalExpense}}
+<div style="display: flex;margin: 15px;">
+    <div class="expense-box">
+        <span>Total expense </span>
+        <p  style="font-weight: bold;">R {{totalExpense}} </p>
+    </div>
+    <div class="income-box">
+        <span>Total income   </span> 
+        <p  style="font-weight: bold;">
+            R {{totalIncome}}
+        </p>
+    </div>
+</div>
 
+<div style="border: 1px solid #dedede; display: flex; flex-direction: column;justify-items: center;text-align: center; padding: 15px;margin: 5px;" >
 <input type=" text"  placeholder="Enter item"  [(ngModel)]="expenseItem"  />
-
 <input type="number"  placeholder="Enter amount"  [(ngModel)]="amount" />
-<select [(ngModel)]="expenseType">
-    <option value="Income"> Income</option>
-    <option value="Expense"> Expense</option>
-</select>
 
-<button  (click)="add()"> Add</button>
+<div style="display: flex; width: 490px;  gap: 5px;  margin: 5px;">
+    <select style="flex-grow: 2; border: 1px solid #dedede; " [(ngModel)]="expenseType">
+        <option value="" disabled selected>Select Expense Type</option>
+        <option value="Income"> Income</option>
+        <option value="Expense"> Expense</option>
+    </select>
+    <button style="flex-grow: 1; background-color: #4D6AE9;color: #fff; height: 30px;border: none;border-radius: 5px;"  (click)="add()"> Add</button>
+</div>
+</div>
 
 <div *ngFor="let item of expenses">
-    {{item.expenseItem}}
-    {{item.amount}}
-     
+    <div 
+        [ngClass]="item.expenseType == 'Expense' ? 'expense' : 'income'"
+        style="height: 40px; width: 500px; margin: 5px; align-content: center;padding: 5px;"
+    >
+        {{item.expenseItem}}
+        {{item.amount}}
+    </div>
+  
+</div>
 </div>
