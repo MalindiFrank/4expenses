@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgFor } from '@angular/common';
+
 @Component({
   selector: 'app-expensetracker',
   standalone: true,
@@ -20,21 +21,26 @@ export class ExpensetrackerComponent {
 
   add (){
 
-    if (this.expenseType == "Income"){
-      this.totalIncome+= this.amount
-
-    } else {
-      this.totalExpense+= this.amount
+    if (this.expenseType != ""){
+      
+      if (this.expenseType == "income"){
+        this.totalIncome += this.amount
+        
+      } else {
+        this.totalExpense += this.amount
+      }
+      
+      let expense = {
+        expenseItem :this.expenseItem,
+        amount:this.amount ,
+        expenseType : this.expenseType
+      }
+      
+      this.expenses.push(expense);
+      console.log(this.expenses);
+      this.expenseItem  =  '';
+      this.amount = 0;
     }
-
-
-    let expense = {
-      expenseItem :this.expenseItem,
-      amount:this.amount ,
-      expenseType : this.expenseType
-    }
-    this.expenses.push(expense);
-    console.log(this.expenses);
 
   }
 
