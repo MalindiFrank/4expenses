@@ -21,7 +21,7 @@ export class ExpensetrackerComponent {
 
   add (){
 
-    if (this.expenseType != ""){
+    if (this.expenseType && this.expenseItem && this.amount){
       
       if (this.expenseType == "income"){
         this.totalIncome += this.amount
