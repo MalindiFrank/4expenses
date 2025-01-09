@@ -54,11 +54,11 @@
         [ngClass]="item.itemType"
         class="list-items"
       >
-        {{ item.title }} <br />
-        <p><strong *ngIf="item.description">Description: </strong> {{ item.description }} </p>
-        <p><strong>Amount: </strong> {{ item.amount }}</p>
-        <p><strong *ngIf="item.category">Category: </strong> {{ item.category }}</p>
-        <p><strong *ngIf="item.payMethod">Payment Method: </strong> {{ item.payMethod }}</p>
+        <p>{{ item.title }}</p>
+        <p *ngIf="item.description"><strong>Description: </strong> {{ item.description }} </p>
+        <p><strong>Amount: </strong> R {{ item.amount }}</p>
+        <p *ngIf="item.category"><strong>Category: </strong> {{ item.category }}</p>
+        <p *ngIf="item.payMethod"><strong>Payment Method: </strong> {{ item.payMethod }}</p>
         <p><strong>Date: </strong> {{ item.date?.slice(0,10) }}</p>
       </li>
     </ul>
