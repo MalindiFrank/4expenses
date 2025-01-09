@@ -1,47 +1,68 @@
 <div class="container">
+  <h1>Expense Tracker</h1>
 
-<h1>Expense Tracker </h1>
-
-<div class="balance">
-  <h2>Your Balance</h2>
-  <h3>
-      R {{totalIncome - totalExpense}}
-  </h3>
-</div>
-
-<div class="total-container">
-  <div class="expense-box total-box">
-    <span> Total expense </span>
-    <p>R {{totalExpense}} </p>
-  </div>
-  <div class="income-box total-box">
-    <span> Total income </span> 
-    <p>
-        R {{totalIncome}}
-    </p>
-  </div>
-</div>
-
-<div class="inputs-container">
-  <input type=" text"  placeholder="Enter item"  [(ngModel)]="expenseItem"  />
-  <input type="number"  placeholder="Enter amount"  [(ngModel)]="amount" />
-
-</div>
-
-<div class="select-item-type">
-  <select [(ngModel)]="expenseType">
-    <option value="" disabled selected>Select Expense Type</option>
-    <option value="income"> Income</option>
-    <option value="expense"> Expense</option>
-  </select>
-  <button (click)="add()"> Add</button>
-</div>
-
-  <div class="list-items-container">
-    <span *ngFor="let item of expenses" [ngClass]="item.expenseType" class="list-items">
-      {{item.expenseItem}}
-      {{item.amount}}
-    </span>
+  <div class="total-container">
+    <div class="expense-box total-box">
+      <span> Total expense </span>
+      <p>R {{ totalExpense }}</p>
+    </div>
+    <div class="income-box total-box">
+      <span> Total income </span>
+      <p>R {{ totalIncome }}</p>
+    </div>
+    <div class="balance total-box">
+      <span> Your Balance </span>
+      <p>R {{ totalIncome - totalExpense }}</p>
+    </div>
   </div>
 
+  <div class="inputs-container">
+    <input type=" text" placeholder="Enter item title" [(ngModel)]="title" />
+    <input type="number" placeholder="Enter amount" [(ngModel)]="amount" />
+    <input type="date" [(ngModel)]="date" />
+  </div>
+
+  <div class="select-item-type">
+    <select [(ngModel)]="itemType">
+      <option value="" disabled selected>Select Expense Type</option>
+      <option *ngFor="let type of expenseTypes">{{ type }}</option>
+    </select>
+    <select *ngIf="itemType == 'Expense'" [(ngModel)]="category">
+      <option value="" disabled selected>Select Category</option>
+      <option *ngFor="let category of categories">{{ category }}</option>
+    </select>
+    <select *ngIf="itemType == 'Expense'" [(ngModel)]="payMethod">
+      <option value="" disabled selected>Select Payment Method</option>
+      <option *ngFor="let method of paymentMethods">{{ method }}</option>
+    </select>
+  </div>
+
+  <div class="select-item-type">
+    <input type="text" *ngIf="itemType == 'Expense'" [(ngModel)]="description" placeholder="Add comment">
+    <button (click)="add()">Add</button>
+  </div>
+
+
+  <ng-container
+    *ngIf="items.length > 0; else noItem"
+    class="list-items-container"
+  >
+    <ul>
+      <li
+        *ngFor="let item of items"
+        [ngClass]="item.itemType"
+        class="list-items"
+      >
+        {{ item.title }} <br />
+        <strong>Description: </strong> {{ item.description }} <br />
+        <strong>Amount: </strong> {{ item.amount }} <br />
+        <strong>Category: </strong> {{ item.category }} <br />
+        <strong>Payment Method: </strong> {{ item.payMethod }} <br />
+        <strong>Date: </strong> {{ item.date }} <br />
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #noItem>
+    <p>No Items found. Add one.</p>
+  </ng-template>
 </div>

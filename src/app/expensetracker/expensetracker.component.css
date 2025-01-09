@@ -15,7 +15,7 @@
 }
 
 .total-box {
-  width: 230px;
+  width: 200px;
   border-radius: 20px;
   padding: 12px;
   color: #fff;
@@ -31,7 +31,7 @@
 }
 
 input {
-  min-width: 230px;
+  min-width: 100px;
   height: 30px;
   border: 1px solid #dedede;
   border-radius: 12px;
@@ -40,7 +40,7 @@ input {
 
 .select-item-type select,
 .select-item-type button {
-  min-width: 240px;
+  min-width: 140px;
   border: 1px solid #dedede;
   border-radius: 10px;
   padding: 6px;
@@ -59,10 +59,15 @@ input {
   border: 0.5px solid;
 }
 
-.expense {
+.Expense {
   color: #EB5757;
 }
 
-.income {
+.Income {
   color: #6FCF96;
+}
+
+.balance {
+  width: 115px;
+  color: black;
 }
