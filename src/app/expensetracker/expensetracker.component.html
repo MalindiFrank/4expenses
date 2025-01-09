@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Expense Tracker</h1>
-
+  <hr>
   <div class="total-container">
+
     <div class="expense-box total-box">
       <span> Total expense </span>
       <p>R {{ totalExpense }}</p>
@@ -38,7 +39,7 @@
   </div>
 
   <div class="select-item-type">
-    <input type="text" *ngIf="itemType == 'Expense'" [(ngModel)]="description" placeholder="Add comment">
+    <input type="text" [(ngModel)]="description" placeholder="Add comment">
     <button (click)="add()">Add</button>
   </div>
 
@@ -54,11 +55,11 @@
         class="list-items"
       >
         {{ item.title }} <br />
-        <strong>Description: </strong> {{ item.description }} <br />
-        <strong>Amount: </strong> {{ item.amount }} <br />
-        <strong>Category: </strong> {{ item.category }} <br />
-        <strong>Payment Method: </strong> {{ item.payMethod }} <br />
-        <strong>Date: </strong> {{ item.date }} <br />
+        <p><strong *ngIf="item.description">Description: </strong> {{ item.description }} </p>
+        <p><strong>Amount: </strong> {{ item.amount }}</p>
+        <p><strong *ngIf="item.category">Category: </strong> {{ item.category }}</p>
+        <p><strong *ngIf="item.payMethod">Payment Method: </strong> {{ item.payMethod }}</p>
+        <p><strong>Date: </strong> {{ item.date?.slice(0,10) }}</p>
       </li>
     </ul>
   </ng-container>

@@ -63,7 +63,7 @@ export class ExpensetrackerComponent {
       let item: Item = {
         title: this.title,
         amount: this.amount,
-        date: this.date,
+        date: this.date? this.date : new Date().toISOString(),
         itemType: this.itemType,
         category: this.category,
         payMethod: this.payMethod,

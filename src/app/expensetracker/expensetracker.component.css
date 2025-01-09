@@ -71,3 +71,7 @@ input {
   width: 115px;
   color: black;
 }
+
+li {
+  list-style: none;
+}
