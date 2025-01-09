@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 export interface Item {
   title: string | null;
@@ -63,7 +63,7 @@ export class ExpensetrackerComponent {
       let item: Item = {
         title: this.title,
         amount: this.amount,
-        date: this.date? this.date : new Date().toISOString(),
+        date: this.date ? this.date : new Date().toISOString(),
         itemType: this.itemType,
         category: this.category,
         payMethod: this.payMethod,
@@ -71,9 +71,13 @@ export class ExpensetrackerComponent {
       };
 
       this.items.push(item);
-      console.log(this.items);
-      this.title = '';
+      this.category = '';
+      this.payMethod = '';
+      this.itemType = '';
+      this.title = null;
       this.amount = null;
+      this.description = null;
+      this.date = null;
     }
   }
 }
